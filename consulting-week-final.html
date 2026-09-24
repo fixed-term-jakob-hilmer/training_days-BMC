@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Build the Perfect Consulting Week</title>
+<style>
+:root{--red:#e20015;--blue:#005691;--navy:#003b6a;--turq:#00879a;--green:#00884a;--purple:#6e3f88;--dark:#333;--line:#d1d3d4;--bg:#f5f5f5;--slot-h:32px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#222;font-family:"Segoe UI",Arial,sans-serif}body:before{content:"";display:block;height:6px;background:linear-gradient(90deg,#e20015 0 14%,#6e3f88 14% 28%,#005691 28% 48%,#00879a 48% 67%,#00884a 67% 83%,#f2b800 83%)}header{background:#fff;border-bottom:1px solid var(--line);padding:24px 30px}.eyebrow{color:var(--blue);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}h1{margin:4px 0;color:var(--navy);font-size:36px;font-weight:600}header p{margin:0;color:#666}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.btn{padding:9px 14px;border:1px solid #aeb7bd;border-radius:2px;background:#fff;color:var(--navy);font-weight:650;cursor:pointer}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}main{display:grid;grid-template-columns:minmax(760px,1fr) 330px;gap:18px;max-width:1500px;margin:auto;padding:22px}.panel{background:#fff;border:1px solid var(--line);box-shadow:0 3px 12px #003b6a12;padding:18px}.calendar{display:grid;grid-template-columns:62px repeat(5,minmax(120px,1fr));border:1px solid var(--line)}.head{background:var(--navy);color:#fff;text-align:center;font-weight:700;padding:9px}.time{height:var(--slot-h);display:flex;justify-content:center;align-items:flex-start;padding-top:2px;background:#f2f3f3;border-top:1px solid var(--line);border-right:1px solid var(--line);font-size:11px;font-weight:700}.slot{height:var(--slot-h);padding:2px;border-top:1px solid var(--line);border-right:1px solid var(--line);position:relative}.slot.half{border-top-style:dotted}.slot.over{background:#e8f3f8;box-shadow:inset 0 0 0 2px var(--blue)}.slot.invalid{background:#ffe5e5}.sidebar h2{margin:0;color:var(--navy)}.hint{font-size:12px;color:#666;margin:6px 0 12px}.group{border:1px solid var(--line);margin-top:8px}.group summary{display:flex;align-items:center;gap:7px;padding:10px;background:#f2f3f3;color:var(--navy);font-size:13px;font-weight:800;cursor:pointer;list-style:none}.group summary:after{content:"▾";margin-left:auto}.group[open] summary:after{transform:rotate(180deg)}.dot{width:10px;height:10px;border-radius:50%}.cards{display:grid;gap:6px;padding:8px}.card{display:flex;align-items:center;justify-content:space-between;gap:6px;border-radius:2px;padding:7px;color:#fff;font-size:12px;font-weight:650;cursor:grab;user-select:none}.card.client{background:var(--green)}.card.team{background:var(--blue)}.card.analysis{background:var(--dark)}.card.internal{background:var(--purple)}.card.travel{background:var(--red)}.card.meal{background:var(--turq)}.meta{font-size:10px;opacity:.9}.badge{min-width:24px;padding:1px 6px;border-radius:10px;background:#ffffffe6;color:#243746;text-align:center}.source.empty{opacity:.38;cursor:not-allowed}.event{position:absolute;z-index:3;left:2px;right:2px;top:2px;padding:4px 24px 4px 6px;overflow:hidden;box-shadow:0 2px 5px #0002;cursor:grab}.event-title{display:block;font-size:10px;line-height:1.15}.event-time{display:block;font-size:9px;opacity:.9;margin-top:2px}.remove{position:absolute;right:3px;top:3px;width:17px;height:17px;padding:0;border:0;border-radius:50%;background:#ffffffdd;color:#801515;font-weight:900;cursor:pointer}.occupied{background:#f7f8f9}.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:#091725cc;z-index:20;padding:20px}.modal.open{display:flex}.box{background:#fff;max-width:680px;width:100%;max-height:90vh;overflow:auto;padding:22px}.close{float:right;border:0;border-radius:50%;width:30px;height:30px;cursor:pointer}.score{font-size:44px;color:var(--navy);font-weight:800}.metric{margin:12px 0}.bar{height:9px;background:#e5ebef}.fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--turq))}footer{background:#fff;border-top:1px solid var(--line);border-bottom:4px solid var(--blue)}.footer{max-width:1500px;margin:auto;padding:18px 24px;font-size:11px;color:#666}.footer strong{color:var(--navy)}.toast{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#182b3a;color:#fff;padding:10px 16px;z-index:30}@media(max-width:1050px){main{grid-template-columns:1fr}.sidebar{order:-1}}@media(max-width:760px){.calendar-wrap{overflow-x:auto}.calendar{min-width:760px}}
+</style>
+<style id="executive-v2-overrides">
+/* ======================================================================
+   V2.0 EXECUTIVE DESIGN PROTOTYPE
+   Visual-only layer. Functional logic stays aligned with V1.1.
+   ====================================================================== */
+:root{--exec-blue:#005691;--exec-navy:#003b6a;--exec-ink:#222;--exec-muted:#68717a;--exec-line:#dde2e5;--exec-paper:#fff;--exec-canvas:#f7f8f9;--slot-h:34px}
+body{background:var(--exec-canvas);color:var(--exec-ink)}
+body:before{height:4px;background:linear-gradient(90deg,#e20015 0 16%,#6e3f88 16% 28%,#005691 28% 50%,#00879a 50% 70%,#00884a 70% 86%,#f2b800 86%)}
+header{padding:30px 40px 24px;border-bottom:1px solid var(--exec-line);box-shadow:none}.eyebrow{color:var(--exec-blue);font-size:10px;letter-spacing:.16em}h1{margin:7px 0 6px;font-size:clamp(30px,3.2vw,46px);font-weight:500;letter-spacing:-.035em}header p{max-width:850px;font-size:14px;line-height:1.55}.toolbar{margin-top:20px;gap:10px}.btn{padding:10px 16px;border-color:#c9d0d5;background:#fff;font-size:12px;letter-spacing:.01em}.btn:hover{background:#f2f6f8;border-color:#8ba9bc}.btn.primary{background:var(--exec-blue);border-color:var(--exec-blue)}
+main{grid-template-columns:minmax(800px,1fr) 310px;gap:22px;max-width:1560px;padding:28px 30px 38px}.panel{border:1px solid var(--exec-line);box-shadow:0 8px 28px rgba(0,59,106,.055);padding:22px}.calendar-wrap>p{margin:0 0 18px;color:var(--exec-muted);font-size:13px}.calendar-wrap>p strong{color:var(--exec-navy);font-weight:700}
+.calendar{border:0;border-bottom:1px solid var(--exec-line);background:#fff;grid-template-columns:70px repeat(5,minmax(128px,1fr))}.head{padding:13px 8px;color:var(--exec-navy);background:#fff;border-right:0;border-bottom:2px solid var(--exec-blue);font-size:12px;letter-spacing:.055em;text-transform:uppercase}.head:first-child{color:var(--exec-muted);text-transform:none;letter-spacing:0}.time{height:var(--slot-h);justify-content:flex-end;align-items:flex-start;padding:4px 10px 0 0;color:#7a838b;background:#fff;border-top:0;border-right:1px solid var(--exec-line);font-size:10px;font-weight:600}.slot{height:var(--slot-h);padding:2px;background:#fff;border-right:1px solid #eef1f3;border-top:1px solid transparent}.slot:not(.half){border-top-color:var(--exec-line)}.slot.half{border-top:1px dotted #edf0f2}.slot.over{background:#eef6fa;box-shadow:inset 0 0 0 1px var(--exec-blue)}.slot.invalid{background:#fff1f2}.occupied{background:#fafbfb}
+.sidebar{padding:20px}.sidebar h2{font-size:17px;font-weight:650;letter-spacing:-.01em}.hint{margin:7px 0 16px;line-height:1.5}.group{border:0;border-top:1px solid var(--exec-line);margin:0}.group:last-child{border-bottom:1px solid var(--exec-line)}.group summary{padding:13px 2px;background:#fff;color:var(--exec-navy);font-size:11px;letter-spacing:.07em;text-transform:uppercase}.group summary:after{font-size:11px;color:#7d878f}.dot{width:3px;height:16px;border-radius:0}.cards{gap:7px;padding:2px 0 14px}
+.card.source{position:relative;padding:10px 42px 10px 13px;color:var(--exec-ink);background:#fff!important;border:1px solid var(--exec-line);border-left:4px solid var(--card-accent,#777);box-shadow:0 2px 7px rgba(18,40,55,.045);font-size:11px;font-weight:650}.card.source.client{--card-accent:#00884a}.card.source.team{--card-accent:#005691}.card.source.analysis{--card-accent:#333}.card.source.internal{--card-accent:#6e3f88}.card.source.travel{--card-accent:#e20015}.card.source.meal{--card-accent:#00879a}.card.source .meta{color:var(--exec-muted);font-size:9px;font-weight:500}.badge{position:absolute;right:10px;top:50%;transform:translateY(-50%);min-width:24px;background:#edf2f5;color:var(--exec-navy);font-size:10px}.source.empty{background:#fafafa!important}
+.event{left:3px;right:3px;top:2px;padding:7px 25px 6px 10px;color:var(--exec-ink)!important;background:#fff!important;border:1px solid var(--exec-line);border-left:4px solid var(--event-accent,#777);box-shadow:0 3px 10px rgba(18,40,55,.11)}.event.client{--event-accent:#00884a}.event.team{--event-accent:#005691}.event.analysis{--event-accent:#333}.event.internal{--event-accent:#6e3f88}.event.travel{--event-accent:#e20015}.event.meal{--event-accent:#00879a}.event-title{font-size:10px;font-weight:700;letter-spacing:.005em}.event-time{color:var(--exec-muted);font-size:9px}.remove{background:#f0f2f3;color:#6c757c;box-shadow:none}
+.modal{background:rgba(12,27,38,.72)}.box{max-width:720px;padding:28px;border-top:4px solid var(--exec-blue);box-shadow:0 25px 70px rgba(0,0,0,.25)}.box h2{margin-top:4px;color:var(--exec-navy);font-size:22px;font-weight:600}.score{font-size:54px;font-weight:600;letter-spacing:-.04em}.metric{margin:15px 0}.bar{height:6px}.fill{background:var(--exec-blue)}
+footer{border-top:1px solid var(--exec-line);border-bottom:3px solid var(--exec-blue)}.footer{padding:20px 30px;line-height:1.55}
+@media(max-width:1100px){main{grid-template-columns:1fr}.sidebar{order:-1}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){header{padding:24px 20px}main{padding:18px 12px}.cards{grid-template-columns:1fr}.calendar{min-width:820px}}
+</style>
+
+<style id="executive-v21-typography">
+/* V2.1 typography update: stronger executive hierarchy, no functional changes. */
+header h1{font-weight:750}
+.eyebrow{font-weight:800}
+.btn{font-weight:700}
+.calendar-wrap>p strong{font-weight:800}
+.head{font-weight:800}
+.time{font-weight:700}
+.sidebar h2{font-weight:750}
+.group summary{font-weight:800}
+.card.source{font-weight:700}
+.card.source>span>span:first-child{text-transform:uppercase;letter-spacing:.025em;font-weight:800}
+.card.source .meta{font-weight:600;text-transform:none;letter-spacing:0}
+.badge{font-weight:800}
+.event-title{text-transform:uppercase;letter-spacing:.025em;font-weight:800}
+.event-time{font-weight:600}
+.box h2{font-weight:750}
+.score{font-weight:800}
+.metric strong{font-weight:750}
+.footer strong{font-weight:800}
+</style>
+
+<style id="executive-v3-dark-theme">
+/* ======================================================================
+   V3.0 EXECUTIVE DARK DESIGN PROTOTYPE
+   Visual-only layer. All functional JavaScript remains unchanged.
+   ====================================================================== */
+:root{
+  --dark-canvas:#0c1116;
+  --dark-surface:#131a21;
+  --dark-surface-2:#19222b;
+  --dark-surface-3:#212c36;
+  --dark-border:#2b3742;
+  --dark-line:#26323c;
+  --dark-text:#f3f6f8;
+  --dark-muted:#9da9b3;
+  --dark-blue:#23a8df;
+  --dark-blue-soft:#163b50;
+  --dark-red:#f05252;
+  --dark-green:#29a36a;
+  --dark-turquoise:#20a9b5;
+  --dark-purple:#a879bd;
+  --dark-gold:#d3a84b;
+  --slot-h:34px;
+}
+html{color-scheme:dark}
+body{background:var(--dark-canvas);color:var(--dark-text)}
+body:before{height:3px;background:linear-gradient(90deg,#e20015 0 15%,#6e3f88 15% 29%,#23a8df 29% 52%,#20a9b5 52% 72%,#29a36a 72% 87%,#d3a84b 87%)}
+header{background:#0f151b;border-bottom:1px solid var(--dark-border);box-shadow:0 12px 45px rgba(0,0,0,.32)}
+.eyebrow{color:var(--dark-blue)}
+header h1{color:var(--dark-text);font-weight:780;text-shadow:0 1px 18px rgba(35,168,223,.08)}
+header p{color:var(--dark-muted)}
+.btn{color:#dce5eb;background:#151d24;border-color:#35434e;box-shadow:none}
+.btn:hover{color:#fff;background:#202b34;border-color:#536574}
+.btn.primary{color:#071015;background:var(--dark-blue);border-color:var(--dark-blue);font-weight:800}
+.btn.primary:hover{background:#58bee7;border-color:#58bee7}
+main{background:transparent}
+.panel{background:var(--dark-surface);border-color:var(--dark-border);box-shadow:0 18px 50px rgba(0,0,0,.22)}
+.calendar-wrap>p{color:var(--dark-muted)}
+.calendar-wrap>p strong{color:var(--dark-text)}
+.calendar{background:var(--dark-surface);border-bottom-color:var(--dark-border)}
+.head{color:var(--dark-text);background:#10171d;border-bottom-color:var(--dark-blue)}
+.head:first-child{color:var(--dark-muted)}
+.time{color:#82909b;background:var(--dark-surface);border-right-color:var(--dark-border)}
+.slot{background:var(--dark-surface);border-right-color:#202a32}
+.slot:not(.half){border-top-color:var(--dark-line)}
+.slot.half{border-top-color:#202830}
+.slot.over{background:var(--dark-blue-soft);box-shadow:inset 0 0 0 1px var(--dark-blue)}
+.slot.invalid{background:#3a2024}
+.occupied{background:#151e25}
+.sidebar h2{color:var(--dark-text)}
+.hint{color:var(--dark-muted)}
+.group{border-top-color:var(--dark-border)}
+.group:last-child{border-bottom-color:var(--dark-border)}
+.group summary{color:#dce6ec;background:var(--dark-surface)}
+.group summary:after{color:#7f909d}
+.card.source{color:var(--dark-text);background:var(--dark-surface-2)!important;border-color:var(--dark-border);box-shadow:0 5px 18px rgba(0,0,0,.17)}
+.card.source:hover{background:var(--dark-surface-3)!important;border-color:#425260}
+.card.source.client{--card-accent:var(--dark-green)}
+.card.source.team{--card-accent:var(--dark-blue)}
+.card.source.analysis{--card-accent:#aeb8bf}
+.card.source.internal{--card-accent:var(--dark-purple)}
+.card.source.travel{--card-accent:var(--dark-red)}
+.card.source.meal{--card-accent:var(--dark-turquoise)}
+.card.source .meta{color:var(--dark-muted)}
+.badge{color:#ddecf3;background:#283640}
+.source.empty{color:#65717b;background:#11171d!important}
+.event{color:var(--dark-text)!important;background:#1c252d!important;border-color:#34424d;box-shadow:0 8px 22px rgba(0,0,0,.35)}
+.event.client{--event-accent:var(--dark-green)}
+.event.team{--event-accent:var(--dark-blue)}
+.event.analysis{--event-accent:#c4ccd2}
+.event.internal{--event-accent:var(--dark-purple)}
+.event.travel{--event-accent:var(--dark-red)}
+.event.meal{--event-accent:var(--dark-turquoise)}
+.event-title{color:#f6f8f9;font-weight:850}
+.event-time{color:#a8b4bd}
+.remove{color:#bdc7cd;background:#2b3740}
+.remove:hover{color:#fff;background:#3b4954}
+.modal{background:rgba(3,7,10,.86);backdrop-filter:blur(5px)}
+.box{color:var(--dark-text);background:var(--dark-surface-2);border:1px solid var(--dark-border);border-top:3px solid var(--dark-blue);box-shadow:0 35px 100px rgba(0,0,0,.6)}
+.box h2{color:var(--dark-text)}
+.close{color:#d8e1e6;background:#2a3640}
+.score{color:#fff;text-shadow:0 0 28px rgba(35,168,223,.18)}
+.metric strong{color:#dce5ea}
+.bar{background:#2b3740}
+.fill{background:linear-gradient(90deg,var(--dark-blue),var(--dark-turquoise))}
+footer{color:var(--dark-muted);background:#0f151b;border-top-color:var(--dark-border);border-bottom-color:var(--dark-blue)}
+.footer strong{color:var(--dark-text)}
+.toast{color:#eff5f7;background:#24313a;border:1px solid #3a4a56;box-shadow:0 12px 35px rgba(0,0,0,.45)}
+@media(max-width:1100px){.sidebar{border-top:3px solid var(--dark-blue)}}
+</style>
+
+<style id="executive-v4-hybrid-theme">
+/* ======================================================================
+   V4.0 HYBRID EXECUTIVE DESIGN
+   Dark executive header, gray workspace, V1-style colored activity cards.
+   Functional JavaScript remains unchanged.
+   ====================================================================== */
+:root{
+  --v4-canvas:#dfe3e6;
+  --v4-panel:#eceff1;
+  --v4-panel-raised:#f6f7f8;
+  --v4-calendar:#f3f4f5;
+  --v4-line:#cbd1d5;
+  --v4-line-soft:#dde1e4;
+  --v4-ink:#20262b;
+  --v4-muted:#636e77;
+  --v4-blue:#005691;
+  --v4-navy:#003b6a;
+  --v4-client:#00884a;
+  --v4-team:#005691;
+  --v4-analysis:#3f464c;
+  --v4-internal:#6e3f88;
+  --v4-travel:#e20015;
+  --v4-meal:#00879a;
+}
+/* Keep the upper section from V3. */
+html{color-scheme:light}
+body{background:var(--v4-canvas);color:var(--v4-ink)}
+header{background:#0f151b;border-bottom:1px solid #2b3742;box-shadow:0 12px 42px rgba(0,0,0,.28)}
+.eyebrow{color:#23a8df}
+header h1{color:#f3f6f8;text-shadow:0 1px 18px rgba(35,168,223,.08)}
+header p{color:#a6b1ba}
+header .btn{color:#dce5eb;background:#151d24;border-color:#35434e}
+header .btn:hover{color:#fff;background:#202b34;border-color:#536574}
+header .btn.primary{color:#071015;background:#23a8df;border-color:#23a8df}
+header .btn.primary:hover{background:#58bee7;border-color:#58bee7}
+/* Gray lower workspace. */
+main{background:var(--v4-canvas)}
+.panel{color:var(--v4-ink);background:var(--v4-panel);border-color:#c8ced2;box-shadow:0 10px 30px rgba(31,43,51,.12)}
+.calendar-wrap>p{color:var(--v4-muted)}
+.calendar-wrap>p strong{color:var(--v4-navy)}
+.calendar{background:var(--v4-calendar);border-bottom-color:var(--v4-line)}
+.head{color:#fff;background:var(--v4-navy);border-bottom-color:#23a8df}
+.head:first-child{color:#e4ebef}
+.time{color:#5f6971;background:#e5e8ea;border-right-color:var(--v4-line)}
+.slot{background:var(--v4-calendar);border-right-color:var(--v4-line-soft)}
+.slot:not(.half){border-top-color:var(--v4-line)}
+.slot.half{border-top-color:#e1e4e6}
+.slot.over{background:#d9ebf4;box-shadow:inset 0 0 0 1px var(--v4-blue)}
+.slot.invalid{background:#f5d9dc}
+.occupied{background:#e9ecee}
+.sidebar h2{color:var(--v4-navy)}
+.hint{color:var(--v4-muted)}
+.group{border-top-color:#c5ccd0}
+.group:last-child{border-bottom-color:#c5ccd0}
+.group summary{color:var(--v4-navy);background:var(--v4-panel)}
+.group summary:after{color:#687680}
+/* Restore fully colored cards from V1 while retaining V4 typography. */
+.card.source{color:#fff!important;background:var(--card-fill)!important;border:0;border-left:0;box-shadow:0 3px 9px rgba(20,31,39,.18)}
+.card.source:hover{background:var(--card-fill)!important;filter:brightness(1.06)}
+.card.source.client{--card-fill:var(--v4-client)}
+.card.source.team{--card-fill:var(--v4-team)}
+.card.source.analysis{--card-fill:var(--v4-analysis)}
+.card.source.internal{--card-fill:var(--v4-internal)}
+.card.source.travel{--card-fill:var(--v4-travel)}
+.card.source.meal{--card-fill:var(--v4-meal)}
+.card.source .meta{color:rgba(255,255,255,.83)}
+.badge{color:#243746;background:rgba(255,255,255,.9)}
+.source.empty{color:#fff;background:var(--card-fill)!important;opacity:.38}
+.event{color:#fff!important;background:var(--event-fill)!important;border:0;border-left:0;box-shadow:0 5px 14px rgba(20,31,39,.25)}
+.event.client{--event-fill:var(--v4-client)}
+.event.team{--event-fill:var(--v4-team)}
+.event.analysis{--event-fill:var(--v4-analysis)}
+.event.internal{--event-fill:var(--v4-internal)}
+.event.travel{--event-fill:var(--v4-travel)}
+.event.meal{--event-fill:var(--v4-meal)}
+.event-title{color:#fff;font-weight:850}
+.event-time{color:rgba(255,255,255,.85)}
+.remove{color:#7c1f25;background:rgba(255,255,255,.9)}
+.remove:hover{color:#4d1014;background:#fff}
+/* Light gray dialogs and footer for a cohesive lower area. */
+.modal{background:rgba(7,13,18,.78);backdrop-filter:blur(5px)}
+.box{color:var(--v4-ink);background:#eef1f3;border:1px solid #bcc5ca;border-top:4px solid var(--v4-blue);box-shadow:0 35px 100px rgba(0,0,0,.48)}
+.box h2{color:var(--v4-navy)}
+.close{color:#4e5961;background:#d9dee1}
+.score{color:var(--v4-navy);text-shadow:none}
+.metric strong{color:#30383e}
+.bar{background:#d1d7da}
+.fill{background:linear-gradient(90deg,var(--v4-blue),var(--v4-meal))}
+footer{color:#5f6971;background:#d7dcdf;border-top-color:#c1c8cc;border-bottom-color:var(--v4-blue)}
+.footer strong{color:var(--v4-navy)}
+.toast{color:#fff;background:#26333c;border:1px solid #40515e;box-shadow:0 12px 35px rgba(0,0,0,.35)}
+@media(max-width:1100px){.sidebar{border-top:3px solid var(--v4-blue)}}
+</style>
+
+<style id="v41-darker-gray-refinement">
+:root{
+ --v41-workspace:#bcc3c9;
+ --v41-panel:#c8ced3;
+ --v41-calendar:#d3d8dc;
+ --v41-grid:#aeb6bc;
+}
+body{background:var(--v41-workspace)!important}
+main{background:var(--v41-workspace)!important}
+.panel{background:var(--v41-panel)!important;border-color:#b2bac0!important}
+.calendar{background:var(--v41-calendar)!important}
+.slot{background:var(--v41-calendar)!important;border-right-color:var(--v41-grid)!important}
+.slot:not(.half){border-top-color:var(--v41-grid)!important}
+.time{background:#c6ccd1!important;border-right-color:var(--v41-grid)!important}
+.occupied{background:#cfd5d9!important}
+.group summary{background:var(--v41-panel)!important}
+footer{background:#bcc3c9!important}
+</style>
+
+<style id="v42-white-workspace">
+/* V4.2 Hybrid White: dark executive header, white workspace, V1 event colors. */
+:root{--v42-white:#ffffff;--v42-offwhite:#fafbfc;--v42-line:#e1e5e8;--v42-ink:#20262b;--v42-muted:#66717a;--v42-blue:#005691;--v42-navy:#003b6a}
+html{color-scheme:light}
+body{background:var(--v42-white)!important;color:var(--v42-ink)!important}
+main{background:var(--v42-white)!important}
+.panel{color:var(--v42-ink)!important;background:var(--v42-white)!important;border-color:var(--v42-line)!important;box-shadow:0 10px 30px rgba(0,59,106,.07)!important}
+.calendar-wrap>p{color:var(--v42-muted)!important}.calendar-wrap>p strong{color:var(--v42-navy)!important}
+.calendar{background:var(--v42-white)!important;border-bottom-color:var(--v42-line)!important}
+.head{color:#fff!important;background:var(--v42-navy)!important;border-bottom-color:#23a8df!important}
+.time{color:#69747d!important;background:var(--v42-offwhite)!important;border-right-color:var(--v42-line)!important}
+.slot{background:var(--v42-white)!important;border-right-color:#eef1f3!important}
+.slot:not(.half){border-top-color:var(--v42-line)!important}.slot.half{border-top-color:#f0f2f4!important}.slot.over{background:#eaf5fa!important}.slot.invalid{background:#fff0f1!important}.occupied{background:#f8f9fa!important}
+.sidebar h2{color:var(--v42-navy)!important}.hint{color:var(--v42-muted)!important}.group{border-top-color:var(--v42-line)!important}.group:last-child{border-bottom-color:var(--v42-line)!important}.group summary{color:var(--v42-navy)!important;background:var(--v42-white)!important}.group summary:after{color:#71808a!important}
+/* Preserve V1-style fully colored source and event cards. */
+.card.source{color:#fff!important;background:var(--card-fill)!important;border:0!important;box-shadow:0 3px 10px rgba(20,31,39,.18)!important}.card.source:hover{background:var(--card-fill)!important;filter:brightness(1.06)}.card.source .meta{color:rgba(255,255,255,.84)!important}.source.empty{background:var(--card-fill)!important;opacity:.38}.badge{color:#243746!important;background:rgba(255,255,255,.92)!important}
+.event{color:#fff!important;background:var(--event-fill)!important;border:0!important;box-shadow:0 5px 14px rgba(20,31,39,.23)!important}.event-title{color:#fff!important}.event-time{color:rgba(255,255,255,.86)!important}.remove{background:rgba(255,255,255,.92)!important;color:#7c1f25!important}
+.box{color:var(--v42-ink)!important;background:#fff!important;border-color:var(--v42-line)!important;border-top-color:var(--v42-blue)!important}.box h2{color:var(--v42-navy)!important}.score{color:var(--v42-navy)!important}.metric strong{color:#30383e!important}.bar{background:#e2e6e8!important}.fill{background:linear-gradient(90deg,var(--v42-blue),#00879a)!important}
+footer{color:#66717a!important;background:#fff!important;border-top-color:var(--v42-line)!important;border-bottom-color:var(--v42-blue)!important}.footer strong{color:var(--v42-navy)!important}
+</style>
+
+<style id="v42-unified-white-surface">
+/* Remove side shadows and make calendar, panels, and surrounding workspace one continuous white surface. */
+body, main, .panel, .calendar-wrap, .sidebar, .calendar {
+  background: #ffffff !important;
+}
+main {
+  max-width: none !important;
+  margin: 0 !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+.panel {
+  box-shadow: none !important;
+  border-color: #e1e5e8 !important;
+}
+.calendar-wrap {
+  box-shadow: none !important;
+}
+.calendar {
+  box-shadow: none !important;
+}
+</style>
+
+<style id="opaque-custom-drag-preview">
+/* Custom drag preview replaces the browser ghost image and stays fully opaque across display scaling levels. */
+body > .card[aria-hidden="true"]{opacity:1!important;filter:none!important;will-change:transform;box-shadow:0 8px 24px rgba(20,31,39,.25)!important}
+</style>
+</head>
+<body><header><div class="eyebrow">BMC Internal · Interactive Consulting Simulation</div><h1>Build the Perfect Consulting Week</h1><p>Design a realistic consulting week with activity-specific durations and 30-minute scheduling precision.</p><div class="toolbar"><button class="btn primary" id="evaluate">Evaluate Week</button><button class="btn" id="reset">Reset Week</button><button class="btn" id="save">Save Progress</button><button class="btn" id="load">Load Saved Week</button></div></header>
+<main><section class="panel calendar-wrap"><p><strong>Your challenge:</strong> Drag activities into the calendar. Each activity automatically reserves all required consecutive 30-minute slots.</p><div class="calendar" id="calendar"></div></section><aside class="panel sidebar"><h2>Activity Library</h2><div class="hint">Expand a category and drag an activity into a free start time. The card shows its duration and remaining quantity. Click × to remove one assignment.</div><div id="library"></div></aside></main>
+<footer><div class="footer"><strong>Build the Perfect Consulting Week</strong><br>Interactive consulting simulation developed by Jakob Hilmer for workshop and onboarding purposes. Based on the internal BMC “Typical Consulting Week” learning concept. Multiple valid solutions may exist.<br><strong>Privacy & data:</strong> All planning data remains in the user’s local browser. No information is transmitted, uploaded, or centrally stored by this tool.<br>Final Version · © 2026 Jakob Hilmer · For training use</div></footer>
+<div class="modal" id="scoreModal"><div class="box"><button class="close" data-close="scoreModal">×</button><h2>Consulting Week Health Score</h2><div class="score" id="score"></div><div id="metrics"></div><h3>Recommendations</h3><ul id="feedback"></ul></div></div>
+<div class="toast" id="toast"></div>
+<script>
+"use strict";
+/* 1. CONFIGURATION */
+const CONFIG={storageKey:"consultingWeekDurationV1",weekdays:["Monday","Tuesday","Wednesday","Thursday","Friday"],startMinutes:8*60,endMinutes:20*60,slotMinutes:30};
+const CATEGORIES={client:{label:"Client Activities",color:"#00884a"},team:{label:"Team / Partner",color:"#005691"},analysis:{label:"Analysis & Delivery",color:"#333333"},internal:{label:"Internal Development",color:"#6e3f88"},travel:{label:"Travel",color:"#e20015"},meal:{label:"Lunch / Event",color:"#00879a"}};
+/* Durations are configurable here. The source deck explicitly states that check-ins are typically short and its visual is not to scale. Other values are workshop configuration choices. */
+const ACTIVITIES=[
+{id:"travel-to",label:"Travel to Client",category:"travel",max:1,duration:120},{id:"travel-from",label:"Travel from Client",category:"travel",max:1,duration:120},
+{id:"lunch-team",label:"Lunch with Team",category:"meal",max:1,duration:60},{id:"lunch-client",label:"Lunch with Client",category:"meal",max:2,duration:60},{id:"working-lunch",label:"Working Lunch Session",category:"meal",max:1,duration:90},{id:"lunch-domain",label:"Lunch with Domain",category:"meal",max:1,duration:60},{id:"team-event",label:"Team Dinner / Event",category:"meal",max:1,duration:120},
+{id:"team-checkin",label:"Team Check-in",category:"team",max:5,duration:30},{id:"team-checkout",label:"Team Check-out",category:"team",max:5,duration:30},{id:"problem",label:"Team Problem Solving",category:"team",max:2,duration:120},{id:"partner",label:"Debrief with Partner",category:"team",max:1,duration:60},
+{id:"client-checkin",label:"Client Check-in",category:"client",max:3,duration:30},{id:"client-work",label:"Client Work Session",category:"client",max:2,duration:120},{id:"steerco",label:"SteerCo",category:"client",max:1,duration:90},{id:"expert",label:"Expert Interviews",category:"client",max:1,duration:90},
+{id:"data",label:"Prepare Data Requests",category:"analysis",max:1,duration:60},{id:"draft-market",label:"Draft Market Model",category:"analysis",max:1,duration:120},{id:"refine-market",label:"Refine Market Model",category:"analysis",max:1,duration:120},{id:"review-data",label:"Review Data",category:"analysis",max:1,duration:90},{id:"review-input",label:"Review Client / Expert Input",category:"analysis",max:1,duration:60},{id:"update-model",label:"Update Model",category:"analysis",max:1,duration:90},{id:"build-model",label:"Build Model in Excel",category:"analysis",max:1,duration:120},{id:"draft-slides",label:"Draft Analysis Slides",category:"analysis",max:1,duration:120},{id:"final-slides",label:"Finalize Analysis Slides",category:"analysis",max:1,duration:120},{id:"prepare-steerco",label:"Prepare SteerCo",category:"analysis",max:1,duration:90},{id:"send-steerco",label:"Finalize & Send SteerCo",category:"analysis",max:1,duration:60},{id:"challenge",label:"Challenge Assumptions",category:"analysis",max:1,duration:60},
+{id:"training",label:"Online Training",category:"internal",max:1,duration:60},{id:"feedback",label:"Feedback Session",category:"internal",max:2,duration:60},{id:"admin",label:"Admin / Expenses",category:"internal",max:1,duration:60},{id:"recruiting",label:"Recruiting Interview",category:"internal",max:1,duration:60}];
+/* 2. STATE AND HELPERS */
+const state={dragged:null,nextId:1};const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];const activity=id=>ACTIVITIES.find(a=>a.id===id);const slotsNeeded=a=>a.duration/CONFIG.slotMinutes;const fmt=m=>`${String(Math.floor(m/60)).padStart(2,"0")}:${String(m%60).padStart(2,"0")}`;const durationLabel=m=>m<60?`${m} min`:m%60?`${Math.floor(m/60)}h ${m%60}m`:`${m/60}h`;
+function notice(t){const e=$("#toast");e.textContent=t;e.style.display="block";clearTimeout(notice.t);notice.t=setTimeout(()=>e.style.display="none",1800)}
+function placed(){return $$(".event").map(e=>({activityId:e.dataset.activityId,instanceId:e.dataset.instanceId,day:+e.dataset.day,start:+e.dataset.start,duration:+e.dataset.duration,category:activity(e.dataset.activityId).category}))}
+function used(id){return $$(`.event[data-activity-id="${id}"]`).length}function remaining(id){const a=activity(id);return a?Math.max(0,a.max-used(id)):0}
+/* 3. INVENTORY */
+function updateInventory(){$$(".source").forEach(e=>{const left=remaining(e.dataset.activityId);e.querySelector(".badge").textContent=left;e.classList.toggle("empty",left===0);e.draggable=left>0})}
+let customDragPreview=null;
+function createTransparentNativeDragImage(){const canvas=document.createElement("canvas");canvas.width=1;canvas.height=1;const context=canvas.getContext("2d");context.clearRect(0,0,1,1);return canvas}
+function removeCustomDragPreview(){if(customDragPreview){customDragPreview.remove();customDragPreview=null}}
+function createCustomDragPreview(sourceElement){removeCustomDragPreview();const bounds=sourceElement.getBoundingClientRect();const preview=sourceElement.cloneNode(true);preview.removeAttribute("draggable");preview.querySelectorAll("button").forEach(button=>button.remove());preview.style.position="fixed";preview.style.left="0";preview.style.top="0";preview.style.width=`${bounds.width}px`;preview.style.height=`${bounds.height}px`;preview.style.margin="0";preview.style.opacity="1";preview.style.filter="none";preview.style.pointerEvents="none";preview.style.zIndex="99999";preview.style.transform="translate(-10000px,-10000px)";preview.style.transition="none";preview.style.boxSizing="border-box";preview.setAttribute("aria-hidden","true");document.body.appendChild(preview);customDragPreview=preview;return preview}
+function moveCustomDragPreview(clientX,clientY){if(!customDragPreview||clientX===0&&clientY===0)return;customDragPreview.style.transform=`translate(${Math.round(clientX+14)}px,${Math.round(clientY+14)}px)`}
+function enableDrag(e){e.draggable=true;e.addEventListener("dragstart",ev=>{if(e.classList.contains("empty")){ev.preventDefault();return}state.dragged=e;createCustomDragPreview(e);ev.dataTransfer.effectAllowed="move";ev.dataTransfer.setData("text/plain",e.dataset.instanceId||e.dataset.activityId);ev.dataTransfer.setDragImage(createTransparentNativeDragImage(),0,0);requestAnimationFrame(()=>moveCustomDragPreview(ev.clientX,ev.clientY))});e.addEventListener("drag",ev=>moveCustomDragPreview(ev.clientX,ev.clientY));e.addEventListener("dragend",()=>{state.dragged=null;removeCustomDragPreview()})}
+document.addEventListener("dragover",ev=>moveCustomDragPreview(ev.clientX,ev.clientY));document.addEventListener("drop",removeCustomDragPreview);
+/* 4. CALENDAR BUILD */
+function createSlots(){const cal=$("#calendar");cal.innerHTML='<div class="head">Time</div>'+CONFIG.weekdays.map(d=>`<div class="head">${d}</div>`).join("");for(let m=CONFIG.startMinutes;m<CONFIG.endMinutes;m+=CONFIG.slotMinutes){const time=document.createElement("div");time.className="time";time.textContent=m%60===0?fmt(m):"";cal.append(time);CONFIG.weekdays.forEach((_,day)=>{const s=document.createElement("div");s.className="slot "+(m%60?"half":"");s.dataset.day=day;s.dataset.start=m;s.addEventListener("dragover",ev=>{ev.preventDefault();s.classList.add("over")});s.addEventListener("dragleave",()=>s.classList.remove("over"));s.addEventListener("drop",ev=>{ev.preventDefault();s.classList.remove("over");dropAt(day,m)});cal.append(s)})}}
+function getSlot(day,start){return $(`.slot[data-day="${day}"][data-start="${start}"]`)}
+function rangeSlots(day,start,duration){const result=[];for(let m=start;m<start+duration;m+=CONFIG.slotMinutes){const s=getSlot(day,m);if(!s)return null;result.push(s)}return result}
+function clearOccupancy(event){const id=event.dataset.instanceId;$$(`.slot[data-event-id="${id}"]`).forEach(s=>{s.classList.remove("occupied");delete s.dataset.eventId})}
+function canPlace(day,start,duration,ignoreId=null){if(start+duration>CONFIG.endMinutes)return false;const range=rangeSlots(day,start,duration);return !!range&&range.every(s=>!s.dataset.eventId||s.dataset.eventId===ignoreId)}
+/* 5. EVENT CREATION AND PLACEMENT */
+function createEvent(a,instanceId=null){const e=document.createElement("div");e.className=`card event ${a.category}`;e.dataset.activityId=a.id;e.dataset.instanceId=instanceId||`event-${state.nextId++}`;e.dataset.duration=a.duration;const title=document.createElement("span");title.className="event-title";title.textContent=a.label;const time=document.createElement("span");time.className="event-time";const remove=document.createElement("button");remove.className="remove";remove.type="button";remove.textContent="×";remove.title="Remove this assignment";remove.onclick=ev=>{ev.stopPropagation();clearOccupancy(e);e.remove();updateInventory()};const wrap=document.createElement("span");wrap.append(title,time);e.append(wrap,remove);enableDrag(e);return e}
+function positionEvent(e,day,start){const a=activity(e.dataset.activityId),range=rangeSlots(day,start,a.duration);if(!range)return false;clearOccupancy(e);e.dataset.day=day;e.dataset.start=start;e.style.height=`calc(${slotsNeeded(a)} * var(--slot-h) - 4px)`;e.querySelector(".event-time").textContent=`${fmt(start)}–${fmt(start+a.duration)} · ${durationLabel(a.duration)}`;range.forEach(s=>{s.dataset.eventId=e.dataset.instanceId;s.classList.add("occupied")});range[0].append(e);return true}
+function dropAt(day,start){if(!state.dragged)return;const id=state.dragged.dataset.activityId,a=activity(id),moving=!state.dragged.classList.contains("source"),ignore=moving?state.dragged.dataset.instanceId:null;if(!a)return;if(!canPlace(day,start,a.duration,ignore)){getSlot(day,start)?.classList.add("invalid");setTimeout(()=>getSlot(day,start)?.classList.remove("invalid"),350);notice(start+a.duration>CONFIG.endMinutes?"The activity does not fit within the visible working day.":"One or more required time slots are already occupied.");return}if(!moving&&remaining(id)<=0){notice("This activity has reached its maximum usage.");return}const e=moving?state.dragged:createEvent(a);positionEvent(e,day,start);updateInventory()}
+/* 6. LIBRARY */
+function buildLibrary(){const lib=$("#library");Object.entries(CATEGORIES).forEach(([key,c],i)=>{const g=document.createElement("details");g.className="group";g.open=i===0;g.innerHTML=`<summary><span class="dot" style="background:${c.color}"></span>${c.label}</summary><div class="cards"></div>`;ACTIVITIES.filter(a=>a.category===key).forEach(a=>{const e=document.createElement("div");e.className=`card source ${a.category}`;e.dataset.activityId=a.id;e.innerHTML=`<span><span>${a.label}</span><br><span class="meta">${durationLabel(a.duration)}</span></span><span class="badge">${a.max}</span>`;enableDrag(e);g.querySelector(".cards").append(e)});lib.append(g)});updateInventory()}
+/* 7. STORAGE */
+function clearAll(){$$(".event").forEach(e=>{clearOccupancy(e);e.remove()});updateInventory()}
+function save(){localStorage.setItem(CONFIG.storageKey,JSON.stringify(placed()));notice("Your week has been saved in this browser.")}
+function load(){const data=JSON.parse(localStorage.getItem(CONFIG.storageKey)||"[]");clearAll();data.forEach(x=>{const a=activity(x.activityId);if(a&&canPlace(x.day,x.start,a.duration)&&remaining(a.id)>0){const e=createEvent(a,x.instanceId);positionEvent(e,x.day,x.start)}});updateInventory();notice(data.length?"Saved week loaded.":"No saved week was found.")}
+/* 8. SCORING */
+function evaluate(){const p=placed(),n=c=>p.filter(x=>x.category===c).length,days=c=>new Set(p.filter(x=>x.category===c).map(x=>x.day)).size,hours=c=>p.filter(x=>x.category===c).reduce((s,x)=>s+x.duration/60,0);const client=Math.min(30,Math.round(hours("client")*6)),team=Math.min(20,n("team")+days("team")*2),analysis=Math.min(20,Math.round(hours("analysis")*2)),internal=Math.min(10,n("internal")*3),meal=Math.min(20,days("meal")*4),metrics=[["Client Impact",client,30],["Team Collaboration",team,20],["Analysis & Delivery",analysis,20],["Learning & Internal",internal,10],["Sustainability",meal,20]],total=metrics.reduce((s,m)=>s+m[1],0);$("#score").textContent=`${total}/100`;$("#metrics").innerHTML=metrics.map(m=>`<div class="metric"><strong>${m[0]}: ${m[1]}/${m[2]}</strong><div class="bar"><div class="fill" style="width:${m[1]/m[2]*100}%"></div></div></div>`).join("");const f=[];if(hours("client")<4)f.push("Increase client-facing time to strengthen stakeholder impact.");if(hours("analysis")<5)f.push("Protect more dedicated analysis and delivery time.");if(days("team")<4)f.push("Distribute team alignment more consistently across the week.");if(days("meal")<4)f.push("Plan proper breaks on most weekdays.");if(n("internal")<1)f.push("Include at least one professional development or internal activity.");$("#feedback").innerHTML=f.map(x=>`<li>${x}</li>`).join("")||"<li>The week shows a balanced mix of core consulting activities.</li>";$("#scoreModal").classList.add("open")}
+/* 9. APPLICATION STARTUP */
+function init(){createSlots();buildLibrary();$("#evaluate").onclick=evaluate;$("#reset").onclick=()=>{if(confirm("Reset all activity assignments?"))clearAll()};$("#save").onclick=save;$("#load").onclick=load;$$('[data-close]').forEach(b=>b.onclick=()=>$("#"+b.dataset.close).classList.remove("open"));$$('.modal').forEach(m=>m.onclick=e=>{if(e.target===m)m.classList.remove("open")});document.onkeydown=e=>{if(e.key==="Escape")$$('.modal.open').forEach(m=>m.classList.remove("open"))}}
+init();
+</script></body></html>
