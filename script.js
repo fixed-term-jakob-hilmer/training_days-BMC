@@ -4,7 +4,7 @@ const CONFIG = {
     storageKey: "consultingWeekDurationV1",
     weekdays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     startMinutes: 480,
-    endMinutes: 1200,
+    endMinutes: 1140,
     slotMinutes: 30
 };
 /* CATEGORIES */
